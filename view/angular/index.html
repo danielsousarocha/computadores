@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<base href="http://localhost/projetos/testes/computadores/view/angular/">
+	<title>Angular</title>
+
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+	<!-- <script type="text/javascript" src="./dist/bundle.js"></script> -->
+	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="src/scripts.js"></script>
+	<script type="text/javascript" src="src/controllers/usersController.js"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="./">Angular</a>
+			</div>
+
+			<div class="collapse navbar-collapse header-navbar">
+				<ul class="nav navbar-nav">
+					<li><a href="users">Usuários</a></li>
+					<li><a href="computers">Computadores</a></li>
+					<li><a href="components">Componentes</a></li>
+					<li><a href="types">Tipos de Componentes</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div ng-view></div>
+
+	</div>
+
+</body>
+</html>
