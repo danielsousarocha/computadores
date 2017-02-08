@@ -9,8 +9,13 @@
 
 			$routeProvider
 				.when("/users", {
-					templateUrl: "src/views/users.html",
+					templateUrl: "src/views/users/index.html",
 					controller: 'usersController',
+					controllerAs: 'vm'
+				})
+				.when("/users/create", {
+					templateUrl: "src/views/users/create.html",
+					controller: "usersController",
 					controllerAs: 'vm'
 				})
 				.when("/computers", {

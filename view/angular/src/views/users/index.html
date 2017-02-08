@@ -1,0 +1,9 @@
+<h1 class="page-header">{{vm.pageTitle}}</h1>
+
+<ul class="list-unstyled">
+	<li ng-repeat="user in vm.users">
+		<small class="text-muted">({{ user.id }})</small>
+		Usuário <a href="user/{{ user.id }}"><b>{{ user.name }}</b></a> está cadastrado com o e-mail <em>{{ user.email }}</em>
+		<i class="btn-remove text-danger" ng-click="vm.removeUser(user.id)">&times;</i>
+	</li>
+</ul>
