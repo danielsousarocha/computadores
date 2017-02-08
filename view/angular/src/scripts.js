@@ -18,6 +18,11 @@
 					controller: "usersController",
 					controllerAs: 'vm'
 				})
+				.when("/user/:id", {
+					templateUrl: "src/views/users/edit.html",
+					controller: "usersEditController",
+					controllerAs: 'vm'
+				})
 				.when("/computers", {
 					templateUrl: "src/views/computers.html",
 					controllerAs: 'vm'
