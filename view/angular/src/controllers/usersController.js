@@ -6,13 +6,13 @@
 
 		vm.pageTitle = 'Usuários';
 		vm.disableSubmitButton = false;
-		vm.ajaxSuccess = false;
 		vm.ajaxMessage = '';
 		vm.ajaxValidation = '';
-		vm.users = [];
+		vm.ajaxValidationErrors = '';
+		vm.ajaxAction = 'Criar';
 
 		vm.getUsers = getUsers;
-		vm.createUser = createUser;
+		vm.submitUser = submitUser;
 		vm.removeUser = removeUser;
 
 		init();
@@ -33,18 +33,21 @@
 			return vm.users;
 		}
 
-		function createUser(formData) {
+		function submitUser(formData) {
 			vm.disableSubmitButton = true;
+			vm.ajaxMessage = 'Cadastrando...';
+			vm.ajaxValidation = '';
 
-			$http.post('http://localhost:8000/users')
+			$http.post('http://localhost:8000/users', formData)
 				.then(function(response) {
 					if (response.data.id) {
-						vm.ajaxSuccess = true;
 						vm.ajaxMessage = 'Usuário criado com sucesso';
 						vm.ajaxValidation = 'text-success';
+						vm.form = {};
 					} else {
 						vm.ajaxMessage = 'O usuário não foi criado';
 						vm.ajaxValidation = 'text-warning';
+						vm.ajaxValidationErrors = response.data;
 					}
 				})
 				.catch(function() {

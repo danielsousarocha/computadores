@@ -19,7 +19,7 @@
 					controllerAs: 'vm'
 				})
 				.when("/user/:id", {
-					templateUrl: "src/views/users/edit.html",
+					templateUrl: "src/views/users/create.html",
 					controller: "usersEditController",
 					controllerAs: 'vm'
 				})
