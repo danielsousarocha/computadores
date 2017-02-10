@@ -92,12 +92,16 @@
 			});
 		}
 
-		function removeUser(userId) {
+		function removeUser(user) {
+
+			var userIndex = vm.users.indexOf(user);
+
 			if (confirm('Deseja realmente excluir este usuário?')) {
-				$http.delete('http://localhost:8000/user/' + userId)
+				$http.delete('http://localhost:8000/user/' + user.id)
 					.then(function(response) {
 						(response.data) ? alert('Usuário deletado com sucesso.') : alert('Nenhum usuário deletado.');
-						vm.users.pop();
+
+						vm.users.splice(userIndex, 1);
 					})
 					.catch(function() {
 						console.warn('Erro ao apagar o usuário');
