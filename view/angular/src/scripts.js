@@ -20,7 +20,7 @@
 				})
 				.when("/user/:id", {
 					templateUrl: "src/views/users/create.html",
-					controller: "usersEditController",
+					controller: "usersController",
 					controllerAs: 'vm'
 				})
 				.when("/computers", {
