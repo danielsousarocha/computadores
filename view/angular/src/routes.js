@@ -14,12 +14,12 @@
 					controllerAs: 'vm'
 				})
 				.when("/users/create", {
-					templateUrl: "src/views/users/create.html",
+					templateUrl: "src/views/users/form.html",
 					controller: "usersController",
 					controllerAs: 'vm'
 				})
 				.when("/user/:id", {
-					templateUrl: "src/views/users/create.html",
+					templateUrl: "src/views/users/form.html",
 					controller: "usersController",
 					controllerAs: 'vm'
 				})
