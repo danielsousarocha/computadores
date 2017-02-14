@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module("app").controller('usersController', function($scope, $http, $routeParams) {
+	angular.module("app").controller('usersController', function($scope, $http, $routeParams, CONSTANTS) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
@@ -33,7 +33,7 @@
 		}
 
 		function getUsers() {
-			$http.get('http://localhost:8000/users')
+			$http.get(CONSTANTS.API.GET_ALL_USERS)
 				.then(function(response) {
 					vm.users = response.data;
 				})
@@ -45,7 +45,7 @@
 		}
 
 		function getUser(userId) {
-			$http.get('http://localhost:8000/user/' + userId)
+			$http.get(CONSTANTS.API.GET_ONE_USER + userId)
 				.then(function(response) {
 					vm.form = response.data;
 				})
@@ -55,11 +55,11 @@
 		}
 
 		function createUser(formData) {
-			return $http.post('http://localhost:8000/users', formData);
+			return $http.post(CONSTANTS.API.CREATE_USER, formData);
 		}
 
 		function updateUser(formData) {
-			return $http.put('http://localhost:8000/user/' + formData.id, formData);
+			return $http.put(CONSTANTS.API.UPDATE_USER + formData.id, formData);
 		}
 
 		function submitUser(formData) {
@@ -97,7 +97,7 @@
 			var userIndex = vm.users.indexOf(user);
 
 			if (confirm('Deseja realmente excluir este usuário?')) {
-				$http.delete('http://localhost:8000/user/' + user.id)
+				$http.delete(CONSTANTS.API.DELETE_USER + user.id)
 					.then(function(response) {
 						(response.data) ? alert('Usuário deletado com sucesso.') : alert('Nenhum usuário deletado.');
 
