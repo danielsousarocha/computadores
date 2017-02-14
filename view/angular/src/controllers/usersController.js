@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module("app").controller('usersController', function($scope, $http, $routeParams, CONSTANTS) {
+	angular.module("app").controller('usersController', function($scope, $http, $routeParams, usersService, CONSTANTS) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
@@ -33,7 +33,7 @@
 		}
 
 		function getUsers() {
-			$http.get(CONSTANTS.API.GET_ALL_USERS)
+			usersService.getAllUsers()
 				.then(function(response) {
 					vm.users = response.data;
 				})
@@ -45,7 +45,7 @@
 		}
 
 		function getUser(userId) {
-			$http.get(CONSTANTS.API.GET_ONE_USER + userId)
+			usersService.getOneUser(userId)
 				.then(function(response) {
 					vm.form = response.data;
 				})
@@ -55,11 +55,11 @@
 		}
 
 		function createUser(formData) {
-			return $http.post(CONSTANTS.API.CREATE_USER, formData);
+			return usersService.createUser(formData);
 		}
 
 		function updateUser(formData) {
-			return $http.put(CONSTANTS.API.UPDATE_USER + formData.id, formData);
+			return usersService.updateUser(formData);
 		}
 
 		function submitUser(formData) {
@@ -97,7 +97,7 @@
 			var userIndex = vm.users.indexOf(user);
 
 			if (confirm('Deseja realmente excluir este usuário?')) {
-				$http.delete(CONSTANTS.API.DELETE_USER + user.id)
+				usersService.deleteUser(user)
 					.then(function(response) {
 						(response.data) ? alert('Usuário deletado com sucesso.') : alert('Nenhum usuário deletado.');
 

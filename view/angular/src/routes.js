@@ -37,8 +37,7 @@
 				})
 				.otherwise({
 					redirectTo: "/",
-					templateUrl: "src/views/home.html",
-					controllerAs: 'vm'
+					templateUrl: "src/views/home.html"
 				});
 		});
 
