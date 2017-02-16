@@ -8,20 +8,20 @@
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
 	<style type="text/css">
-		.dropdown:hover .dropdown-menu {
-			display: block;
-		}
-
-		footer.well {
-			margin-bottom: 0;
-		}
+		.horizontal-collapse { height: 70px; }
+		.navbar-collapse.in { overflow-y: hidden; }
+		footer.well { margin-bottom: 0; }
 	</style>
 
-	<!-- <script type="text/javascript" src="./dist/bundle.js"></script> -->
 	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
 	<script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
-	<script type="text/javascript" src="src/routes.js"></script>
+	<script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-touch/angular-touch.min.js"></script>
+	<script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+
+	<script type="text/javascript" src="src/app.js"></script>
 	<script type="text/javascript" src="src/constants.js"></script>
+	<script type="text/javascript" src="src/configBootstrap.js"></script>
 	<script type="text/javascript" src="src/services/usersService.js"></script>
 	<script type="text/javascript" src="src/controllers/usersController.js"></script>
 </head>

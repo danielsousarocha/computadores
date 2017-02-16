@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module("app", ["ngRoute"])
+		.module("app", ["ngRoute", "ngAnimate", "ngTouch", "ui.bootstrap"])
 		.config(function($routeProvider, $locationProvider) {
 
 			$locationProvider.html5Mode(true);
