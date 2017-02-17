@@ -24,7 +24,7 @@ class UsersController extends Controller
     	$validationRequest = $this->validateRequest($request);
 
     	if ($validationRequest->fails()) {
-    		return $validationRequest->errors();
+            return $this->generateErrorResponse($validationRequest->errors());
     	}
 
     	$requestData = $request->all();
@@ -35,20 +35,24 @@ class UsersController extends Controller
 
     public function update(Request $request, $userId)
     {
-    	$validationRequest = $this->validateRequest($request);
+    	$validationRequest = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email'
+        ]);
 
     	if ($validationRequest->fails()) {
-    		return $validationRequest->errors();
+    		return $this->generateErrorResponse($validationRequest->errors());
     	}
 
-    	$user = User::find($userId);
+    	$user = User::whereEmail($request->email)->first();
 
         if ($user) {
         	$user->update($request->all());
         	return $user;
         }
 
-    	return $this->generateErrorResponse();
+        $error = ['user' => [ 0 => 'User not found']];
+    	return $this->generateErrorResponse($error);
     }
 
     public function destroy($userId)

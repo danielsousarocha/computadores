@@ -20,11 +20,11 @@
 	<div class="form-group">
 		<label for="email" class="control-label col-sm-2">E-mail:</label>
 		<div class="col-sm-10">
-			<input type="email" class="form-control" ng-model="vm.form.email" name="email" placeholder="Digite um e-mail" required>
+			<input type="email" class="form-control" ng-model="vm.form.email" ng-disabled="vm.form.id" name="email" placeholder="Digite um e-mail" required>
 		</div>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group" ng-if="!vm.form.id">
 		<label for="password" class="control-label col-sm-2">Senha:</label>
 		<div class="col-sm-10">
 			<input type="password" class="form-control" ng-model="vm.form.password" name="password" placeholder="Digite uma senha" required>

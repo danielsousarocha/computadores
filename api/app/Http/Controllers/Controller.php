@@ -11,8 +11,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function generateErrorResponse()
+    protected function generateErrorResponse($errors = false)
     {
-    	return ['success' => false];
+    	return [
+    		'success' => false,
+    		'errors' => $errors
+    	];
     }
 }

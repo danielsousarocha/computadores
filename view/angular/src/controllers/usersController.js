@@ -67,7 +67,7 @@
 			vm.ajaxMessage = 'Processando...';
 			vm.ajaxValidation = '';
 
-			var ajax = vm.currentUserId ? vm.updateUser(formData) : vm.createUser(formData);
+			var ajax = vm[ vm.currentUserId ? 'updateUser' : 'createUser' ](formData);
 
 			ajax.then(function(response) {
 				if (response.data.id) {
@@ -75,12 +75,13 @@
 					vm.ajaxValidation = 'text-success';
 					vm.ajaxValidationErrors = '';
 
+					// Limpa o formulário na tela de edição
 					if (!vm.currentUserId) vm.form = {};
 
 				} else {
 					vm.ajaxMessage = 'Ocorreu um erro durante a validação dos dados';
 					vm.ajaxValidation = 'text-warning';
-					vm.ajaxValidationErrors = response.data;
+					vm.ajaxValidationErrors = response.data.errors;
 				}
 			})
 			.catch(function() {
