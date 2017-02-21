@@ -13,11 +13,14 @@
 		<tbody>
 			<tr dir-paginate="user in vm.users | itemsPerPage: 10">
 				<td>
-					<a href="user/{{ user.id }}" class="btn btn-xs btn-info">
+					<a href="user/{{ user.id }}" class="btn btn-xs btn-info" uib-tooltip="Editar">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
-					<a href="#" class="btn btn-xs btn-danger" ng-click="vm.removeUser(user)">
+					<a href="#" class="btn btn-xs btn-danger" ng-click="vm.removeUser(user)" uib-tooltip="Excluir">
 						<span class="glyphicon glyphicon-remove"></span>
+					</a>
+					<a href="show/user/{{ user.id }}" class="btn btn-xs btn-primary" uib-tooltip="Visualizar">
+						<span class="glyphicon glyphicon-eye-open"></span>
 					</a>
 				</td>
 				<td class="text-muted">{{ user.id }}</td>
@@ -26,8 +29,9 @@
 			</tr>
 		</tbody>
 	</table>
+
+	<dir-pagination-controls></dir-pagination-controls>
 </div>
 
-<dir-pagination-controls></dir-pagination-controls>
 
 <p class="alert alert-warning text-center" ng-if="!vm.users.length">Nenhum usuário encontrado</p>

@@ -11,34 +11,39 @@
 				.when("/users", {
 					templateUrl: "src/views/users/index.html",
 					controller: 'usersController',
-					controllerAs: 'vm'
+					controllerAs: "vm"
 				})
 				.when("/users/create", {
 					templateUrl: "src/views/users/form.html",
 					controller: "usersController",
-					controllerAs: 'vm'
+					controllerAs: "vm"
 				})
 				.when("/user/:id", {
 					templateUrl: "src/views/users/form.html",
 					controller: "usersController",
-					controllerAs: 'vm'
+					controllerAs: "vm"
+				})
+				.when("/show/user/:id", {
+					templateUrl: "src/views/users/show.html",
+					controller: "usersController",
+					controllerAs: "vm"
 				})
 				.when("/computers", {
 					templateUrl: "src/views/computers.html",
-					controllerAs: 'vm'
+					controllerAs: "vm"
 				})
 				.when("/components", {
 					templateUrl: "src/views/components.html",
-					controllerAs: 'vm'
+					controllerAs: "vm"
 				})
 				.when("/types", {
 					templateUrl: "src/views/types.html",
-					controllerAs: 'vm'
+					controllerAs: "vm"
 				})
-				.otherwise({
+				/*.otherwise({
 					redirectTo: "/",
 					templateUrl: "src/views/home.html"
-				});
+				});*/
 		});
 
 })();
