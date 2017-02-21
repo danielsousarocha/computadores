@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('app').controller('computersController', function($scope, $routeParams, computersService, CONSTANTS) {
+	angular.module('app').controller('computersController', function($scope, $routeParams, computersService, CONSTANTS, growl) {
 		var vm = this;
 
 		vm.currentComputerId = $routeParams.id || 0;
@@ -29,7 +29,7 @@
 					vm.computers = response.data;
 				})
 				.catch(function() {
-					console.warn('Erro ao buscar os computadores.');
+					growl.error('Erro ao buscar os computadores.');
 				});
 		}
 
@@ -39,7 +39,7 @@
 					console.log(response);
 				})
 				.catch(function() {
-					console.warn('Erro ao buscar o computador.');
+					growl.error('Erro ao buscar o computador.');
 				});
 		}
 	})

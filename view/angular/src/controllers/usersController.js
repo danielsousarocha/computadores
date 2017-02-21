@@ -1,14 +1,13 @@
 (function () {
 	'use strict';
 
-	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, CONSTANTS) {
+	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, CONSTANTS, growl) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
 
 		vm.disableSubmitButton = false;
 		vm.ajaxMessage = '';
-		vm.ajaxValidation = '';
 		vm.ajaxValidationErrors = '';
 
 		if (vm.currentUserId) {
@@ -38,7 +37,7 @@
 					vm.users = response.data;
 				})
 				.catch(function() {
-					console.warn('Erro ao buscar os usuários.');
+					growl.error('Erro ao buscar os usuários.');
 				});
 
 			return vm.users;
@@ -50,7 +49,7 @@
 					vm.form = response.data;
 				})
 				.catch(function() {
-					console.warn('Erro ao buscar o usuário.');
+					growl.error('Erro ao buscar o usuário.');
 				});
 		}
 
@@ -65,30 +64,27 @@
 		function submitUser(formData) {
 			vm.disableSubmitButton = true;
 			vm.ajaxMessage = 'Processando...';
-			vm.ajaxValidation = '';
 
 			var ajax = vm[ vm.currentUserId ? 'updateUser' : 'createUser' ](formData);
 
 			ajax.then(function(response) {
 				if (response.data.id) {
-					vm.ajaxMessage = 'Processo finalizado com sucesso';
-					vm.ajaxValidation = 'text-success';
 					vm.ajaxValidationErrors = '';
 
 					// Limpa o formulário na tela de edição
 					if (!vm.currentUserId) vm.form = {};
+					growl.success('Processo finalizado com sucesso.');
 
 				} else {
-					vm.ajaxMessage = 'Ocorreu um erro durante a validação dos dados';
-					vm.ajaxValidation = 'text-warning';
 					vm.ajaxValidationErrors = response.data.errors;
+					growl.warning('Ocorreu um erro durante a validação dos dados.');
 				}
 			})
 			.catch(function() {
-				vm.ajaxMessage = 'Ocorreu um erro no servidor.';
-				vm.ajaxValidation = 'text-danger';
+				growl.error('Ocorreu um erro no servidor.');
 			})
 			.finally(function() {
+				vm.ajaxMessage = '';
 				vm.disableSubmitButton = false;
 			});
 		}
@@ -100,12 +96,13 @@
 			if (confirm('Deseja realmente excluir este usuário?')) {
 				usersService.deleteUser(user)
 					.then(function(response) {
-						(response.data) ? alert('Usuário deletado com sucesso.') : alert('Nenhum usuário deletado.');
+						('Computadores buscados com sucesso.');
+						(response.data) ? growl.success('Usuário deletado com sucesso.') : growl.warning('Nenhum usuário deletado.');
 
 						vm.users.splice(userIndex, 1);
 					})
 					.catch(function() {
-						console.warn('Erro ao apagar o usuário');
+						growl.error('Erro ao apagar o usuário');
 					});
 			}
 		}

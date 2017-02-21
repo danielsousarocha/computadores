@@ -1,6 +1,6 @@
 <h1 class="page-header">{{ vm.pageTitle }}</h1>
 
-<div class="table-responsive">
+<div class="table-responsive" ng-if="vm.computers.length">
 
 	<table class="table table-striped table-hover table-bordered">
 		<thead>
@@ -31,3 +31,5 @@
 
 	<dir-pagination-controls></dir-pagination-controls>
 </div>
+
+<p class="alert alert-warning text-center" ng-if="!vm.users.length">Nenhum computador encontrado</p>
