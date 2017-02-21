@@ -29,7 +29,8 @@
 					controllerAs: "vm"
 				})
 				.when("/computers", {
-					templateUrl: "src/views/computers.html",
+					templateUrl: "src/views/computers/index.html",
+					controller: "computersController",
 					controllerAs: "vm"
 				})
 				.when("/components", {
@@ -40,10 +41,10 @@
 					templateUrl: "src/views/types.html",
 					controllerAs: "vm"
 				})
-				/*.otherwise({
+				.otherwise({
 					redirectTo: "/",
 					templateUrl: "src/views/home.html"
-				});*/
+				});
 		});
 
 })();

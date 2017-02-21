@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module("app").controller('usersController', function($scope, $http, $routeParams, usersService, CONSTANTS) {
+	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, CONSTANTS) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
