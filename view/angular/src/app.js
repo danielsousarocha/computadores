@@ -2,7 +2,16 @@
 	'use strict';
 
 	angular
-		.module("app", ["ngRoute", "ngAnimate", "ngTouch", "ui.bootstrap", "angular-loading-bar", "angularUtils.directives.dirPagination", "angular-growl"])
+		.module("app", [
+			"ngRoute",
+			"ngAnimate",
+			"ngTouch",
+			"ui.bootstrap",
+			"angular-loading-bar",
+			"angularUtils.directives.dirPagination",
+			"angular-growl",
+			"angular-confirm"
+		])
 		.config(function($routeProvider, $locationProvider) {
 
 			$locationProvider.html5Mode(true);

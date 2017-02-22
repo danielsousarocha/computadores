@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, CONSTANTS, growl) {
+	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, CONSTANTS, growl, $confirm) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
@@ -93,18 +93,19 @@
 
 			var userIndex = vm.users.indexOf(user);
 
-			if (confirm('Deseja realmente excluir este usuário?')) {
-				usersService.deleteUser(user)
-					.then(function(response) {
-						('Computadores buscados com sucesso.');
-						(response.data) ? growl.success('Usuário deletado com sucesso.') : growl.warning('Nenhum usuário deletado.');
+			$confirm({text: 'Deseja realmente excluir ' + user.name + '?'})
+				.then(function(){
+					usersService.deleteUser(user)
+						.then(function(response) {
+							(response.data) ? growl.success('Usuário deletado com sucesso.') : growl.warning('Nenhum usuário deletado.');
 
-						vm.users.splice(userIndex, 1);
-					})
-					.catch(function() {
-						growl.error('Erro ao apagar o usuário');
-					});
-			}
+							vm.users.splice(userIndex, 1);
+						})
+						.catch(function() {
+							growl.error('Erro ao apagar o usuário');
+						});
+				})
+				.catch(function(){});
 		}
 	});
 })();
