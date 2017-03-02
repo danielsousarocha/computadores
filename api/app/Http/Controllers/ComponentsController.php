@@ -23,7 +23,7 @@ class ComponentsController extends Controller
     	$validationRequest = $this->validateRequest($request);
 
     	if ($validationRequest->fails()) {
-    		return $validationRequest->errors();
+            return $this->generateErrorResponse($validationRequest->errors());
     	}
 
     	return Components::create($request->all());
@@ -44,6 +44,7 @@ class ComponentsController extends Controller
     		return $component;
     	}
 
+        $error = ['component' => [ 0 => 'Component not found']];
     	return $this->generateErrorResponse();
     }
 

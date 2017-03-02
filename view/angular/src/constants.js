@@ -15,7 +15,13 @@
 			GET_ONE_COMPUTER: baseApiUrl + '/computer/',
 			CREATE_COMPUTER: baseApiUrl + '/computers',
 			UPDATE_COMPUTER: baseApiUrl + '/computer/',
-			DELETE_COMPUTER: baseApiUrl + '/computer/'
+			DELETE_COMPUTER: baseApiUrl + '/computer/',
+
+			GET_ALL_COMPONENTS: baseApiUrl + '/components',
+			GET_ONE_COMPONENT: baseApiUrl + '/component/',
+			CREATE_COMPONENT: baseApiUrl + '/components',
+			UPDATE_COMPONENT: baseApiUrl + '/component/',
+			DELETE_COMPONENT: baseApiUrl + '/component/'
 		}
 	});
 

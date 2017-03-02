@@ -19,7 +19,6 @@
 		};
 
 		var _removeComputer = function(computer) {
-			console.log(computer);
 			return $http.delete(CONSTANTS.API.DELETE_COMPUTER + computer.id);
 		};
 

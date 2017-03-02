@@ -58,7 +58,6 @@
 			var ajax = vm[ vm.currentComputerId ? 'updateComputer' : 'createComputer' ](formData);
 
 			ajax.then(function(response) {
-				console.log(response);
 				if (response.data.id) {
 					vm.ajaxValidationErrors = '';
 

@@ -60,7 +60,23 @@
 				})
 
 				.when("/components", {
-					templateUrl: "src/views/components.html",
+					templateUrl: "src/views/components/index.html",
+					controller: "componentsController",
+					controllerAs: "vm"
+				})
+				.when("/components/create", {
+					templateUrl: "src/views/components/form.html",
+					controller: "componentsController",
+					controllerAs: "vm"
+				})
+				.when("/component/:id", {
+					templateUrl: "src/views/components/form.html",
+					controller: "componentsController",
+					controllerAs: "vm"
+				})
+				.when("/show/component/:id", {
+					templateUrl: "src/views/components/show.html",
+					controller: "componentsController",
 					controllerAs: "vm"
 				})
 

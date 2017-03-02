@@ -1,0 +1,25 @@
+<h1 class="page-header">{{ vm.pageTitle.replace('Editar', 'Visualizar') }}</h1>
+
+<div class="row">
+	<div class="col-sm-6">
+		<dl class="dl-horizontal">
+			<dt>Id:</dt>
+			<dd>{{ vm.form.id }}</dd>
+
+			<dt>Nome:</dt>
+			<dd>{{ vm.form.model }}</dd>
+
+			<dt>Cadastrado em:</dt>
+			<dd>{{ vm.form.created_at}}</dd>
+
+			<dt>Computadores:</dt>
+			<dd>{{ vm.form.computers.length }}</dd>
+		</dl>
+	</div>
+	<div class="col-sm-6" ng-if="vm.form.computers.length">
+		<h4>Computadores que possuem este componente:</h4>
+		<ol class="list-unstyled">
+			<li ng-repeat="computer in vm.form.computers"><b>{{ computer.name }}</b> comprado em: {{ computer.created_at }}</li>
+		</ol>
+	</div>
+</div>
