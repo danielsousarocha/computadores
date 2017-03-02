@@ -30,10 +30,10 @@
 	<script type="text/javascript" src="node_modules/angular-confirm/angular-confirm.min.js"></script>
 
 	<!-- Config -->
-	<script type="text/javascript" src="src/app.js"></script>
-	<script type="text/javascript" src="src/constants.js"></script>
-	<script type="text/javascript" src="src/config.js"></script>
-	<script type="text/javascript" src="src/configBootstrap.js"></script>
+	<script type="text/javascript" src="src/config/app.js"></script>
+	<script type="text/javascript" src="src/config/constants.js"></script>
+	<script type="text/javascript" src="src/config/config.js"></script>
+	<script type="text/javascript" src="src/config/configBootstrap.js"></script>
 
 	<!-- Users -->
 	<script type="text/javascript" src="src/services/usersService.js"></script>
@@ -56,14 +56,14 @@
 	<div class="site-wrapper">
 		<div growl></div>
 
-		<div ng-include="'src/views/header.html'"></div>
+		<div ng-include="'src/views/includes/header.html'"></div>
 
 		<div class="container">
 			<div ng-view></div>
 		</div>
 	</div>
 
-	<div ng-include="'src/views/footer.html'"></div>
+	<div ng-include="'src/views/includes/footer.html'"></div>
 
 </body>
 </html>

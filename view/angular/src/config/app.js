@@ -103,7 +103,7 @@
 
 				.otherwise({
 					redirectTo: "/",
-					templateUrl: "src/views/home.html"
+					templateUrl: "src/views/includes/home.html"
 				});
 		});
 
