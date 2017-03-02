@@ -31,6 +31,15 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<label for="computers" class="control-label col-sm-2">Computadores</label>
+		<div class="col-sm-10">
+			<select class="form-control" name="computers" ng-model="vm.form.computers" ng-options="computer.name for computer in vm.computers" multiple>
+				<option value="">Escolha os computadores</option>
+			</select>
+		</div>
+	</div>
+
 	<div class="form-group" ng-show="vm.ajaxValidationErrors">
 		<div class="col-sm-10 col-sm-offset-2">
 			<ul class="list-unstyled alert alert-danger">

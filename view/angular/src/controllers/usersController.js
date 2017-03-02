@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, CONSTANTS, growl, $confirm) {
+	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, computersService, CONSTANTS, growl, $confirm) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
@@ -28,6 +28,7 @@
 		init();
 
 		function init() {
+			getComputers();
 			return vm.currentUserId ? vm.getUser(vm.currentUserId) : vm.getUsers();
 		}
 
@@ -41,6 +42,17 @@
 				});
 
 			return vm.users;
+		}
+
+		function getComputers() {
+
+			computersService.getAllComputers()
+				.then(function(response) {
+					vm.computers = response.data;
+				})
+				.catch(function() {
+					growl.error('Erro ao buscar os computadores');
+				});
 		}
 
 		function getUser(userId) {
