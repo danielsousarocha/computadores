@@ -11,6 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="node_modules/angular-growl-v2/build/angular-growl.min.css">
 
 	<style type="text/css">
+		html, body { height: 100% }
+		.site-wrapper { min-height: calc(100% - 40px) }
 		.horizontal-collapse { height: 70px; }
 		.navbar-collapse.in { overflow-y: hidden; }
 		footer.well { margin-bottom: 0; }
@@ -50,12 +52,15 @@
 	<script type="text/javascript" src="src/controllers/componentTypesController.js"></script>
 </head>
 <body>
-	<div growl></div>
 
-	<div ng-include="'src/views/header.html'"></div>
+	<div class="site-wrapper">
+		<div growl></div>
 
-	<div class="container">
-		<div ng-view></div>
+		<div ng-include="'src/views/header.html'"></div>
+
+		<div class="container">
+			<div ng-view></div>
+		</div>
 	</div>
 
 	<div ng-include="'src/views/footer.html'"></div>
