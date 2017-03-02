@@ -33,9 +33,9 @@ class ComponentsController extends Controller
     {
     	$requestValidation = $this->validateRequest($request);
 
-    	if ($requestValidation->fails()) {
-    		return $requestValidation->errors();
-    	}
+        if ($validationRequest->fails()) {
+            return $this->generateErrorResponse($validationRequest->errors());
+        }
 
     	$component = Components::find($componentId);
 

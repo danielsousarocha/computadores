@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Components extends Model
 {
@@ -11,6 +12,11 @@ class Components extends Model
     	'name',
     	'model'
     ];
+
+    public function getCreatedAtAttribute($date)
+    {
+        return Carbon::parse($date)->format('d/m/Y');
+    }
 
     public function type()
     {

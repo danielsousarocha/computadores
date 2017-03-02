@@ -1,0 +1,25 @@
+<h1 class="page-header">{{ vm.pageTitle.replace('Editar', 'Visualizar') }}</h1>
+
+<div class="row">
+	<div class="col-sm-6">
+		<dl class="dl-horizontal">
+			<dt>Id:</dt>
+			<dd>{{ vm.form.id }}</dd>
+
+			<dt>Nome:</dt>
+			<dd>{{ vm.form.name }}</dd>
+
+			<dt>Cadastrado em:</dt>
+			<dd>{{ vm.form.created_at }}</dd>
+
+			<dt>Componentes:</dt>
+			<dd>{{ vm.form.components.length }}</dd>
+		</dl>
+	</div>
+	<div class="col-sm-6" ng-if="vm.form.components.length">
+		<h4>Componentes deste tipo:</h4>
+		<ol class="list-unstyled">
+			<li ng-repeat="component in vm.form.components"><b>{{ component.model }}</b> comprado em: {{ component.created_at }}</li>
+		</ol>
+	</div>
+</div>

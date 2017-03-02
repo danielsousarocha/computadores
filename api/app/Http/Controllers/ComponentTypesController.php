@@ -15,16 +15,16 @@ class ComponentTypesController extends Controller
 
     public function show($componentTypeId)
     {
-    	return ComponentTypes::find($componentTypeId);
+    	return ComponentTypes::find($componentTypeId)->load('components');
     }
 
     public function store(Request $request)
     {
-    	$validationRequest = $this->validateRequest($request);
+    	$requestValidation = $this->validateRequest($request);
 
-    	if ($validationRequest->fails()) {
-    		return $validationRequest->errors();
-    	}
+        if ($requestValidation->fails()) {
+            return $this->generateErrorResponse($requestValidation->errors());
+        }
 
     	return ComponentTypes::create($request->all());
     }
@@ -34,7 +34,7 @@ class ComponentTypesController extends Controller
     	$requestValidation = $this->validateRequest($request);
 
     	if ($requestValidation->fails()) {
-    		return $requestValidation->errors();
+            return $this->generateErrorResponse($requestValidation->errors());
     	}
 
     	$componentType = ComponentTypes::find($componentTypeId);
@@ -44,6 +44,7 @@ class ComponentTypesController extends Controller
     		return $componentType;
     	}
 
+        $error = ['componentType' => [ 0 => 'Component Type not found']];
     	return $this->generateErrorResponse();
     }
 

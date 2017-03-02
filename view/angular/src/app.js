@@ -81,7 +81,23 @@
 				})
 
 				.when("/types", {
-					templateUrl: "src/views/types.html",
+					templateUrl: "src/views/componentTypes/index.html",
+					controller: "componentTypesController",
+					controllerAs: "vm"
+				})
+				.when("/types/create", {
+					templateUrl: "src/views/componentTypes/form.html",
+					controller: "componentTypesController",
+					controllerAs: "vm"
+				})
+				.when("/type/:id", {
+					templateUrl: "src/views/componentTypes/form.html",
+					controller: "componentTypesController",
+					controllerAs: "vm"
+				})
+				.when("/show/type/:id", {
+					templateUrl: "src/views/componentTypes/show.html",
+					controller: "componentTypesController",
 					controllerAs: "vm"
 				})
 

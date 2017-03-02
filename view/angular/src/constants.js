@@ -21,7 +21,13 @@
 			GET_ONE_COMPONENT: baseApiUrl + '/component/',
 			CREATE_COMPONENT: baseApiUrl + '/components',
 			UPDATE_COMPONENT: baseApiUrl + '/component/',
-			DELETE_COMPONENT: baseApiUrl + '/component/'
+			DELETE_COMPONENT: baseApiUrl + '/component/',
+
+			GET_ALL_COMPONENT_TYPES: baseApiUrl + '/types',
+			GET_ONE_COMPONENT_TYPE: baseApiUrl + '/type/',
+			CREATE_COMPONENT_TYPE: baseApiUrl + '/types',
+			UPDATE_COMPONENT_TYPE: baseApiUrl + '/type/',
+			DELETE_COMPONENT_TYPE: baseApiUrl + '/type/'
 		}
 	});
 
