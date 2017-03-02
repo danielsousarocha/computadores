@@ -24,7 +24,7 @@ class ComputersController extends Controller
     	$requestValidation = $this->validateRequest($request);
 
     	if ($requestValidation->fails()) {
-    		return $requestValidation->errors();
+            return $this->generateErrorResponse($requestValidation->errors());
     	}
 
     	return Computers::create($request->all());
@@ -35,7 +35,7 @@ class ComputersController extends Controller
     	$requestValidation = $this->validateRequest($request);
 
     	if ($requestValidation->fails()) {
-    		return $requestValidation->errors();
+            return $this->generateErrorResponse($requestValidation->errors());
     	}
 
     	$computer = Computers::find($computerId);
@@ -45,6 +45,7 @@ class ComputersController extends Controller
     		return $computer;
     	}
 
+        $error = ['computer' => [ 0 => 'Computer not found']];
     	return $this->generateErrorResponse();
     }
 

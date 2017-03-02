@@ -12,7 +12,10 @@
 			DELETE_USER: baseApiUrl + '/user/',
 
 			GET_ALL_COMPUTERS: baseApiUrl + '/computers',
-			GET_ONE_COMPUTER: baseApiUrl + '/computer/'
+			GET_ONE_COMPUTER: baseApiUrl + '/computer/',
+			CREATE_COMPUTER: baseApiUrl + '/computers',
+			UPDATE_COMPUTER: baseApiUrl + '/computer/',
+			DELETE_COMPUTER: baseApiUrl + '/computer/'
 		}
 	});
 

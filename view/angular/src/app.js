@@ -37,19 +37,38 @@
 					controller: "usersController",
 					controllerAs: "vm"
 				})
+
 				.when("/computers", {
 					templateUrl: "src/views/computers/index.html",
 					controller: "computersController",
 					controllerAs: "vm"
 				})
+				.when("/computers/create", {
+					templateUrl: "src/views/computers/form.html",
+					controller: "computersController",
+					controllerAs: "vm"
+				})
+				.when("/computer/:id", {
+					templateUrl: "src/views/computers/form.html",
+					controller: "computersController",
+					controllerAs: "vm"
+				})
+				.when("/show/computer/:id", {
+					templateUrl: "src/views/computers/show.html",
+					controller: "computersController",
+					controllerAs: "vm"
+				})
+
 				.when("/components", {
 					templateUrl: "src/views/components.html",
 					controllerAs: "vm"
 				})
+
 				.when("/types", {
 					templateUrl: "src/views/types.html",
 					controllerAs: "vm"
 				})
+
 				.otherwise({
 					redirectTo: "/",
 					templateUrl: "src/views/home.html"
