@@ -27,6 +27,7 @@
     "angular-confirm": "^1.2.6",
     "angular-growl-v2": "^0.7.5",
     "angular-loading-bar": "^0.9.0",
+    "angular-multiple-select": "^1.1.2",
     "angular-route": "^1.6.2",
     "angular-touch": "^1.6.2",
     "angular-ui-bootstrap": "^2.5.0",

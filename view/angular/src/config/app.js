@@ -10,7 +10,8 @@
 			"angular-loading-bar",
 			"angularUtils.directives.dirPagination",
 			"angular-growl",
-			"angular-confirm"
+			"angular-confirm",
+			"multipleSelect"
 		])
 		.config(function($routeProvider, $locationProvider) {
 

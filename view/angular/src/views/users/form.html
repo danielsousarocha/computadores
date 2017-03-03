@@ -34,9 +34,7 @@
 	<div class="form-group">
 		<label for="computers" class="control-label col-sm-2">Computadores</label>
 		<div class="col-sm-10">
-			<select class="form-control" name="computers" ng-model="vm.form.computers" ng-options="computer.name for computer in vm.computers" multiple>
-				<option value="">Escolha os computadores</option>
-			</select>
+			<multiple-autocomplete ng-model="vm.form.computers" object-property="name" suggestions-arr="vm.computers"></multiple-autocomplete>
 		</div>
 	</div>
 

@@ -27,10 +27,20 @@ class UsersController extends Controller
             return $this->generateErrorResponse($validationRequest->errors());
     	}
 
-    	$requestData = $request->all();
-    	$requestData['password'] = bcrypt($requestData['password']);
+        $requestData = $request->all();
+    	$requestData['computersIds'] = array_column($requestData['computers'], 'id');
 
-    	return User::create($requestData);
+    	if (isset($requestData['password'])) {
+            $requestData['password'] = bcrypt($requestData['password']);
+        }
+
+    	$createdUser = User::create($requestData);
+
+        if (!empty($requestData['computersIds'])) {
+            $createdUser->computers()->attach($requestData['computersIds']);
+        }
+
+        return $createdUser;
     }
 
     public function update(Request $request, $userId)
