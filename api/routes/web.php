@@ -11,16 +11,6 @@
 |
 */
 
-// Welcome
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Angular Training
-Route::get('/angular', function () {
-    return view('angular');
-});
-
 // Component Types
 Route::get('/types', 'ComponentTypesController@index');
 Route::post('/types', 'ComponentTypesController@store');
