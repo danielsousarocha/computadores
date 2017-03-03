@@ -10,6 +10,7 @@
 			CREATE_USER: baseApiUrl + '/users',
 			UPDATE_USER: baseApiUrl + '/user/',
 			DELETE_USER: baseApiUrl + '/user/',
+			REMOVE_COMPUTER_FROM_USER: baseApiUrl + '/user/computer/',
 
 			GET_ALL_COMPUTERS: baseApiUrl + '/computers',
 			GET_ONE_COMPUTER: baseApiUrl + '/computer/',

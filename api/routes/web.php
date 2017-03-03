@@ -38,3 +38,4 @@ Route::post('/users', 'UsersController@store');
 Route::get('/user/{user}', 'UsersController@show');
 Route::put('/user/{user}', 'UsersController@update');
 Route::delete('/user/{user}', 'UsersController@destroy');
+Route::delete('/user/computer/{user}/{computer}', 'UsersController@removeComputer');

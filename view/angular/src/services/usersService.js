@@ -21,12 +21,17 @@
 			return $http.delete(CONSTANTS.API.DELETE_USER + user.id);
 		};
 
+		var _removeComputer = function(userId, computerId) {
+			return $http.delete(CONSTANTS.API.REMOVE_COMPUTER_FROM_USER + userId + '/' + computerId);
+		}
+
 		return {
 			getAllUsers: _getAllUsers,
 			getOneUser: _getOneUser,
 			createUser: _createUser,
 			updateUser: _updateUser,
-			deleteUser: _deleteUser
+			deleteUser: _deleteUser,
+			removeComputer: _removeComputer
 		};
 	});
 

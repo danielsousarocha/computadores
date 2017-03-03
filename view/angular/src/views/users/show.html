@@ -22,7 +22,11 @@
 	<div class="col-sm-6" ng-if="vm.form.computers.length">
 		<h4>Computadores que possui:</h4>
 		<ol class="list-unstyled">
-			<li ng-repeat="computer in vm.form.computers"><b>{{ computer.name }}</b> comprado em: {{ computer.created_at }}</li>
+			<li ng-repeat="computer in vm.form.computers">
+				<small class="text-muted">(id: {{ computer.id }})</small>
+				<b>{{ computer.name }}</b> comprado em: {{ computer.created_at }}
+				<a href="#" class="text-danger" ng-click="vm.removeComputer(vm.form, computer)" uib-tooltip="Remover computador"><b>&times;</b></a>
+			</li>
 		</ol>
 	</div>
 </div>

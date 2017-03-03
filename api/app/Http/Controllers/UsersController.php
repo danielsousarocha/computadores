@@ -77,6 +77,11 @@ class UsersController extends Controller
     	return User::destroy($userId);
     }
 
+    public function removeComputer($userId, $computerId)
+    {
+        return User::find($userId)->computers()->detach($computerId);
+    }
+
     private function validateRequest($request)
     {
     	$validator = Validator::make($request->all(), [

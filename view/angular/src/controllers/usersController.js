@@ -24,6 +24,7 @@
 		vm.createUser = createUser;
 		vm.submitUser = submitUser;
 		vm.removeUser = removeUser;
+		vm.removeComputer = removeComputer;
 
 		init();
 
@@ -114,6 +115,24 @@
 						})
 						.catch(function() {
 							growl.error('Erro ao apagar o usuário');
+						});
+				})
+				.catch(function(){});
+		}
+
+		function removeComputer(user, computer) {
+			var computerIndex = vm.form.computers.indexOf(computer);
+
+			$confirm({text: 'Deseja realmente remover o computador ' + computer.id + ' do usuário ' + user.name + '?'})
+				.then(function(){
+					usersService.removeComputer(user.id, computer.id)
+						.then(function(response) {
+							(response.data) ? growl.success('Computador removido com sucesso.') : growl.warning('Nenhum computador removido.');
+
+							vm.form.computers.splice(computerIndex, 1);
+						})
+						.catch(function() {
+							growl.error('Erro ao remover o computador deste usuário.');
 						});
 				})
 				.catch(function(){});
