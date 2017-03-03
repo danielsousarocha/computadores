@@ -11,13 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="node_modules/angular-growl-v2/build/angular-growl.min.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/angular-multiple-select/build/multiple-select.min.css">
 
-	<style type="text/css">
-		html, body { height: 100% }
-		.site-wrapper { min-height: calc(100% - 40px) }
-		.horizontal-collapse { height: 70px; }
-		.navbar-collapse.in { overflow-y: hidden; }
-		footer.well { margin-bottom: 0; }
-	</style>
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
 
 	<!-- Node Modules -->
 	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
@@ -37,21 +32,17 @@
 	<script type="text/javascript" src="src/config/config.js"></script>
 	<script type="text/javascript" src="src/config/configBootstrap.js"></script>
 
-	<!-- Users -->
-	<script type="text/javascript" src="src/services/usersService.js"></script>
+	<!-- Controllers -->
 	<script type="text/javascript" src="src/controllers/usersController.js"></script>
-
-	<!-- Computers -->
-	<script type="text/javascript" src="src/services/computersService.js"></script>
 	<script type="text/javascript" src="src/controllers/computersController.js"></script>
-
-	<!-- Components -->
-	<script type="text/javascript" src="src/services/componentsService.js"></script>
 	<script type="text/javascript" src="src/controllers/componentsController.js"></script>
-
-	<!-- Component Types -->
-	<script type="text/javascript" src="src/services/componentTypesService.js"></script>
 	<script type="text/javascript" src="src/controllers/componentTypesController.js"></script>
+
+	<!-- Services -->
+	<script type="text/javascript" src="src/services/usersService.js"></script>
+	<script type="text/javascript" src="src/services/computersService.js"></script>
+	<script type="text/javascript" src="src/services/componentsService.js"></script>
+	<script type="text/javascript" src="src/services/componentTypesService.js"></script>
 </head>
 <body>
 

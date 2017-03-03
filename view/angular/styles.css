@@ -1,0 +1,30 @@
+html,
+body {
+	height: 100%
+}
+
+.site-wrapper {
+	min-height: calc(100% - 40px)
+}
+
+.navbar {
+	border-radius: 0;
+}
+
+.horizontal-collapse {
+	height: 70px;
+}
+
+.navbar-collapse.in {
+	overflow-y: hidden;
+}
+
+.form-item-container .list-inline li,
+.form-item-container .list-inline input {
+	width: 100%;
+}
+
+footer.well {
+	margin-bottom: 0;
+	border-radius: 0;
+}
