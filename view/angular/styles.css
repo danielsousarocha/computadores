@@ -19,9 +19,13 @@ body {
 	overflow-y: hidden;
 }
 
-.form-item-container .list-inline li,
+.form-item-container .list-inline li:last-child,
 .form-item-container .list-inline input {
 	width: 100%;
+}
+
+.autocomplete-list {
+	width: calc(100% - 30px);
 }
 
 footer.well {

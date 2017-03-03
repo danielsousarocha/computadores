@@ -45,7 +45,6 @@
 		}
 
 		function getComputers() {
-
 			computersService.getAllComputers()
 				.then(function(response) {
 					vm.computers = response.data;

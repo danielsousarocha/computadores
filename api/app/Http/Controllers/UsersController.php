@@ -55,9 +55,16 @@ class UsersController extends Controller
     	}
 
     	$user = User::whereEmail($request->email)->first();
-
         if ($user) {
-        	$user->update($request->all());
+            $requestData = $request->all();
+            $requestData['computersIds'] = array_column($requestData['computers'], 'id');
+
+            $user->update($requestData);
+
+            if (!empty($requestData['computersIds'])) {
+            	$user->computers()->sync($requestData['computersIds']);;
+            }
+
         	return $user;
         }
 
