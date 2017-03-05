@@ -15,6 +15,6 @@ Após isso faça o seguinte:
 - Crie um banco de dados SQLite chamado `database.sqlite` dentro do diretório `api/app/database`
 - Crie as tabelas com o comando `php artisan migrate` e popule-as com o comando `php artisan db:seed`
 - Sirva a API com o comando `php artisan serve`
-- Mude para o diretório `view/angular` e digite `npm install` para instalar todas as dependências do front
+- Mude para o diretório `view/angular` e digite `npm install && bower install` para instalar todas as dependências do front
 
 Por fim, crie um vhost/link apontado para a pasta `view` e no browser digite `url-para-pasta-view/angular` para visualizar o sistema e começar a usar.
