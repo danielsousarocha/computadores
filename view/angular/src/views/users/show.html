@@ -17,6 +17,9 @@
 
 			<dt>Computadores:</dt>
 			<dd>{{ vm.form.computers.length }}</dd>
+
+			<dt>Descruição:</dt>
+			<dd ng-bind-html="vm.form.description"></dd>
 		</dl>
 	</div>
 	<div class="col-sm-6" ng-if="vm.form.computers.length">

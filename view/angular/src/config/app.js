@@ -11,7 +11,8 @@
 			"angularUtils.directives.dirPagination",
 			"angular-growl",
 			"angular-confirm",
-			"multipleSelect"
+			"multipleSelect",
+			"ui.tinymce"
 		])
 		.config(function($routeProvider, $locationProvider) {
 

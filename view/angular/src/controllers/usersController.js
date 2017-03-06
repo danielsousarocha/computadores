@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, computersService, CONSTANTS, growl, $confirm) {
+	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, computersService, CONSTANTS, growl, $confirm, $sce) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
@@ -58,7 +58,11 @@
 		function getUser(userId) {
 			usersService.getOneUser(userId)
 				.then(function(response) {
-					vm.form = response.data;
+					var responseData = response.data;
+
+					responseData.description = $sce.trustAsHtml(responseData.description);
+
+					vm.form = responseData;
 				})
 				.catch(function() {
 					growl.error('Erro ao buscar o usuário.');

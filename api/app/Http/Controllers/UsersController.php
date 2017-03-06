@@ -28,7 +28,6 @@ class UsersController extends Controller
     	}
 
         $requestData = $request->all();
-    	$requestData['computersIds'] = array_column($requestData['computers'], 'id');
 
     	if (isset($requestData['password'])) {
             $requestData['password'] = bcrypt($requestData['password']);
@@ -37,6 +36,7 @@ class UsersController extends Controller
     	$createdUser = User::create($requestData);
 
         if (!empty($requestData['computersIds'])) {
+            $requestData['computersIds'] = array_column($requestData['computers'], 'id');
             $createdUser->computers()->attach($requestData['computersIds']);
         }
 
