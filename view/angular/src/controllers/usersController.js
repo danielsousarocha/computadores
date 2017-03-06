@@ -60,9 +60,11 @@
 				.then(function(response) {
 					var responseData = response.data;
 
+					// Permite renderizar html na view
 					responseData.description = $sce.trustAsHtml(responseData.description);
 
 					vm.form = responseData;
+					console.log(vm.form);
 				})
 				.catch(function() {
 					growl.error('Erro ao buscar o usuário.');
@@ -80,6 +82,9 @@
 		function submitUser(formData) {
 			vm.disableSubmitButton = true;
 			vm.ajaxMessage = 'Processando...';
+
+			// Força a enviar o conteúdo html como string
+			vm.form.description = tinyMCE.activeEditor.getContent();
 
 			var ajax = vm[ vm.currentUserId ? 'updateUser' : 'createUser' ](formData);
 

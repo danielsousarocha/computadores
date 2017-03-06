@@ -35,7 +35,7 @@ class UsersController extends Controller
 
     	$createdUser = User::create($requestData);
 
-        if (!empty($requestData['computersIds'])) {
+        if (isset($requestData['computers'])) {
             $requestData['computersIds'] = array_column($requestData['computers'], 'id');
             $createdUser->computers()->attach($requestData['computersIds']);
         }
@@ -54,15 +54,15 @@ class UsersController extends Controller
     		return $this->generateErrorResponse($validationRequest->errors());
     	}
 
-    	$user = User::whereEmail($request->email)->first();
+        $user = User::whereEmail($request->email)->first();
         if ($user) {
             $requestData = $request->all();
-            $requestData['computersIds'] = array_column($requestData['computers'], 'id');
 
             $user->update($requestData);
 
-            if (!empty($requestData['computersIds'])) {
-            	$user->computers()->sync($requestData['computersIds']);;
+            if (isset($requestData['computers'])) {
+                $requestData['computersIds'] = array_column($requestData['computers'], 'id');
+                $user->computers()->sync($requestData['computersIds']);;
             }
 
         	return $user;
