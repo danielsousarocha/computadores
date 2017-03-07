@@ -1,6 +1,6 @@
 <h1 class="page-header">{{vm.pageTitle}}</h1>
 
-<form class="form-horizontal" name="addUserForm" ng-submit="vm.submitUser(vm.form)">
+<form class="form-horizontal" name="userForm" ng-submit="vm.submitUser(vm.form)" novalidate>
 	<legend>Dados do Usuário</legend>
 
 	<div class="form-group" ng-if="vm.form.id">
@@ -10,31 +10,43 @@
 		</div>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error': userForm.name.$dirty && userForm.name.$invalid}">
 		<label for="name" class="control-label col-sm-2">Nome:</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" ng-model="vm.form.name" name="name" placeholder="Digite um nome" required>
+			<div ng-messages="userForm.name.$dirty && userForm.name.$error">
+				<small ng-message="required" class="help-block">O nome é obrigatório</small>
+			</div>
 		</div>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group" ng-class="{'has-error': userForm.email.$dirty && userForm.email.$invalid}">
 		<label for="email" class="control-label col-sm-2">E-mail:</label>
 		<div class="col-sm-10">
 			<input type="email" class="form-control" ng-model="vm.form.email" ng-disabled="vm.form.id" name="email" placeholder="Digite um e-mail" required>
+			<div ng-messages="userForm.email.$dirty && userForm.email.$error">
+				<small ng-message="required" class="help-block">O e-mail é obrigatório</small>
+				<small ng-message="email" class="help-block">Digite um e-mail válido</small>
+			</div>
 		</div>
 	</div>
 
-	<div class="form-group" ng-if="!vm.form.id">
+	<div class="form-group" ng-if="!vm.form.id" ng-class="{'has-error': userForm.password.$dirty && userForm.password.$invalid}">
 		<label for="password" class="control-label col-sm-2">Senha:</label>
 		<div class="col-sm-10">
-			<input type="password" class="form-control" ng-model="vm.form.password" name="password" placeholder="Digite uma senha" required>
+			<input type="password" class="form-control" ng-model="vm.form.password" name="password" ng-minlength="3" ng-maxlength="10" placeholder="Digite uma senha" required>
+			<div ng-messages="userForm.password.$dirty && userForm.password.$error">
+				<small ng-message="required" class="help-block">A senha é obrigatória</small>
+				<small ng-message="minlength" class="help-block">Você deve digitar pelo menos 3 caracteres</small>
+				<small ng-message="maxlength" class="help-block">Você deve digitar no máximo 10 caracteres</small>
+			</div>
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label for="computers" class="control-label col-sm-2">Computadores</label>
 		<div class="col-sm-10">
-			<multiple-autocomplete ng-model="vm.form.computers" object-property="name" suggestions-arr="vm.computers"></multiple-autocomplete>
+			<multiple-autocomplete ng-model="vm.form.computers" object-property="name" suggestions-arr="vm.computers" name="comp"></multiple-autocomplete>
 		</div>
 	</div>
 
@@ -56,7 +68,7 @@
 	<div class="form-group text-right">
 		<p class="control-label col-sm-10">{{ vm.ajaxMessage }}</p>
 		<div class="col-sm-2">
-			<button type="submit" class="btn btn-block btn-success" ng-disabled="vm.disableSubmitButton">{{ vm.ajaxAction }}</button>
+			<button type="submit" class="btn btn-block btn-success" ng-disabled="userForm.$invalid || vm.disableSubmitButton">{{ vm.ajaxAction }}</button>
 		</div>
 	</div>
 </form>

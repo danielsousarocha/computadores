@@ -92,8 +92,12 @@
 				if (response.data.id) {
 					vm.ajaxValidationErrors = '';
 
-					// Limpa o formulário na tela de edição
-					if (!vm.currentUserId) vm.form = {};
+					// Limpa o formulário na tela de criação e reseta o estado do formulário
+					if (!vm.currentUserId) {
+						vm.form = {};
+						$scope.userForm.$setPristine();
+					}
+
 					growl.success('Processo finalizado com sucesso.');
 
 				} else {
