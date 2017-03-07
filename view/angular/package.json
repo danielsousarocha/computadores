@@ -26,7 +26,6 @@
     "angular-touch": "^1.6.2",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-utils-pagination": "^0.11.1",
-    "babel-loader": "^6.3.2",
     "bootstrap": "^3.3.7"
   }
 }
