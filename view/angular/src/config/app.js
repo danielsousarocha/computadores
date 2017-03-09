@@ -7,6 +7,7 @@
 			"ngAnimate",
 			"ngTouch",
 			"ngMessages",
+			"ngFileUpload",
 			"ui.bootstrap",
 			"angular-loading-bar",
 			"angularUtils.directives.dirPagination",

@@ -1,6 +1,6 @@
 (function () {
 
-	angular.module("app").factory('usersService', function($http, CONSTANTS) {
+	angular.module("app").factory('usersService', function($http, CONSTANTS, Upload) {
 		var _getAllUsers = function() {
 			return $http.get(CONSTANTS.API.GET_ALL_USERS);
 		};
@@ -10,11 +10,11 @@
 		};
 
 		var _createUser = function(formData) {
-			return $http.post(CONSTANTS.API.CREATE_USER, formData);
+			return Upload.upload({url: CONSTANTS.API.CREATE_USER, data: formData});
 		};
 
 		var _updateUser = function(formData) {
-			return $http.put(CONSTANTS.API.UPDATE_USER + formData.id, formData);
+			return Upload.upload({url: CONSTANTS.API.UPDATE_USER + formData.id, data: formData});
 		};
 
 		var _deleteUser = function(user) {

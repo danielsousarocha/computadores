@@ -1,12 +1,17 @@
 <h1 class="page-header">{{vm.pageTitle}}</h1>
 
-<form class="form-horizontal" name="userForm" ng-submit="vm.submitUser(vm.form)" novalidate>
+<form class="form-horizontal" name="userForm" ng-submit="vm.submitUser(vm.form)" enctype="multipart/form-data" novalidate>
 	<legend>Dados do Usuário</legend>
 
-	<div class="form-group" ng-if="vm.form.id">
-		<label for="name" class="control-label col-sm-2">ID:</label>
-		<div class="col-sm-10">
-			<p class="help-block">{{ vm.form.id }}</p>
+	<div class="form-group" ng-class="{'has-error': userForm.avatar.$dirty && userForm.avatar.$invalid}">
+		<div class="col-sm-10 col-sm-offset-2">
+			<img class="img-thumbnail center-block" ngf-thumbnail="vm.form.avatar" ngf-size="{height: 200}">
+		</div>
+		<div class="col-sm-10 col-sm-offset-2">
+			<input type="file" class="center-block" name="avatar" ngf-select ng-model="vm.form.avatar" ngf-resize="{height: 200}" ngf-max-size="2MB" class="btn btn-default" />
+			<div ng-messages="userForm.avatar.$dirty && userForm.avatar.$error">
+				<small ng-message="maxSize" class="help-block">A imagem é muito grande. Não pode ser maior do que 2 MB.</small>
+			</div>
 		</div>
 	</div>
 

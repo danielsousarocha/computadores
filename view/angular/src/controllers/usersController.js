@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, computersService, CONSTANTS, growl, $confirm, $sce) {
+	angular.module('app').controller('usersController', function($scope, $routeParams, usersService, computersService, CONSTANTS, growl, $confirm, $sce, Upload) {
 		var vm = this;
 
 		vm.currentUserId = $routeParams.id || 0;
@@ -76,6 +76,7 @@
 		}
 
 		function updateUser(formData) {
+			console.warn(formData);
 			return usersService.updateUser(formData);
 		}
 
@@ -89,6 +90,7 @@
 			var ajax = vm[ vm.currentUserId ? 'updateUser' : 'createUser' ](formData);
 
 			ajax.then(function(response) {
+				console.info(response);
 				if (response.data.id) {
 					vm.ajaxValidationErrors = '';
 

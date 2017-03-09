@@ -16,18 +16,22 @@ class UsersController extends Controller
 
     public function show($userId)
     {
-    	return User::find($userId)->load('computers.components.type');
+        return User::find($userId)->load('computers.components.type');
     }
 
     public function store(Request $request)
     {
-    	$validationRequest = $this->validateRequest($request);
+        $validationRequest = $this->validateRequest($request);
 
-    	if ($validationRequest->fails()) {
+        if ($validationRequest->fails()) {
             return $this->generateErrorResponse($validationRequest->errors());
-    	}
+        }
 
         $requestData = $request->all();
+
+        if (isset($requestData['avatar'])) {
+            $requestData['avatar'] = $this->handleUploadAndGetPathTo($requestData['avatar']);
+        }
 
     	if (isset($requestData['password'])) {
             $requestData['password'] = bcrypt($requestData['password']);
@@ -55,8 +59,13 @@ class UsersController extends Controller
     	}
 
         $user = User::whereEmail($request->email)->first();
+
         if ($user) {
             $requestData = $request->all();
+
+            if (isset($requestData['avatar'])) {
+                $requestData['avatar'] = $this->handleUploadAndGetPathTo($requestData['avatar']);
+            }
 
             $user->update($requestData);
 
@@ -86,10 +95,20 @@ class UsersController extends Controller
     {
     	$validator = Validator::make($request->all(), [
     		'name' => 'required',
-    		'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users',
     		'password' => 'required|min:3'
     	]);
 
     	return $validator;
+    }
+
+    private function handleUploadAndGetPathTo($avatar)
+    {
+        $hashedImageName = time().'.'.$avatar->getClientOriginalExtension();
+        $avatar->move(public_path('images/users'), $hashedImageName);
+
+        $publicUrlToFolder = asset('images/users/' . $hashedImageName);
+
+        return $publicUrlToFolder;
     }
 }
